@@ -18,7 +18,8 @@ function App() {
   const basePrice = parseFloat(price) || 0
   const tax1 = basePrice * TAX_RATE
   const tax2 = basePrice * TAX_RATE
-  const total = basePrice + tax1 + tax2
+  const TotalTax = tax1 + tax2
+  const total = basePrice + TotalTax
   const hasPrice = price !== '' && !Number.isNaN(parseFloat(price))
 
   return (
@@ -40,6 +41,10 @@ function App() {
             <div className="row">
               <span>Tax 2 (2.5%)</span>
               <span>{formatINR(tax2)}</span>
+            </div>
+            <div className="row subtotal">
+              <span>Total tax</span>
+              <span>{formatINR(TotalTax)}</span>
             </div>
             <div className="row total">
               <span>Final price</span>

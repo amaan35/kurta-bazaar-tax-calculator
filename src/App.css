@@ -48,7 +48,7 @@
 .results-area {
   width: 100%;
   max-width: 320px;
-  min-height: 196px;
+  min-height: 245px;
   display: flex;
   align-items: flex-end;
 }
@@ -70,6 +70,12 @@
 
 .row:last-child {
   border-bottom: none;
+}
+
+.row.subtotal {
+  font-weight: 500;
+  color: var(--text-h);
+  background: var(--code-bg);
 }
 
 .row.total {
