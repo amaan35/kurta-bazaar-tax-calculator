@@ -8,7 +8,7 @@ function formatINR(amount) {
     style: 'currency',
     currency: 'INR',
     minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+    maximumFractionDigits: 3,
   }).format(amount)
 }
 
@@ -23,8 +23,31 @@ function App() {
 
   return (
     <main className="calculator">
-      <h1>Tax Calculator</h1>
+      <h1>Kurta Bazaar Tax Calculator</h1>
       <p className="subtitle">Add two 2.5% taxes to the product price</p>
+
+      <div className="results-area">
+        {hasPrice && (
+          <div className="breakdown">
+            <div className="row">
+              <span>Original price</span>
+              <span>{formatINR(basePrice)}</span>
+            </div>
+            <div className="row">
+              <span>Tax 1 (2.5%)</span>
+              <span>{formatINR(tax1)}</span>
+            </div>
+            <div className="row">
+              <span>Tax 2 (2.5%)</span>
+              <span>{formatINR(tax2)}</span>
+            </div>
+            <div className="row total">
+              <span>Final price</span>
+              <span>{formatINR(total)}</span>
+            </div>
+          </div>
+        )}
+      </div>
 
       <label className="input-group" htmlFor="price">
         Product price (INR)
@@ -38,27 +61,6 @@ function App() {
           onChange={(e) => setPrice(e.target.value)}
         />
       </label>
-
-      {hasPrice && (
-        <div className="breakdown">
-          <div className="row">
-            <span>Original price</span>
-            <span>{formatINR(basePrice)}</span>
-          </div>
-          <div className="row">
-            <span>Tax 1 (2.5%)</span>
-            <span>{formatINR(tax1)}</span>
-          </div>
-          <div className="row">
-            <span>Tax 2 (2.5%)</span>
-            <span>{formatINR(tax2)}</span>
-          </div>
-          <div className="row total">
-            <span>Final price</span>
-            <span>{formatINR(total)}</span>
-          </div>
-        </div>
-      )}
     </main>
   )
 }
